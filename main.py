@@ -9,34 +9,49 @@ st.set_page_config(
     layout="centered"
 )
 
-# 2. แต่งสวย + ซ่อนเมนู (ฉบับยาแรง!)
+# 2. แต่งสวย + ซ่อนเมนู (ฉบับล้างบาง!)
 st.markdown("""
     <style>
-    /* --- ส่วนสำคัญ: ซ่อนเรียบวุธ! --- */
-    /* ซ่อน Hamburger Menu ด้านบน */
-    #MainMenu {visibility: hidden;}
+    /* --- SECTION 1: ซ่อน UI ของ Streamlit ให้เกลี้ยง --- */
     
-    /* ซ่อน Footer (Made with Streamlit) และบีบความสูงให้เหลือ 0 */
-    footer {
-        visibility: hidden !important;
-        height: 0px !important;
-        padding: 0px !important;
+    /* ซ่อน Header ด้านบน (แถบสีขาวๆ) */
+    header[data-testid="stHeader"] {
+        visibility: hidden;
+        height: 0%;
     }
     
-    /* ซ่อนปุ่ม Manage App (รูปมงกุฎมุมขวาล่าง) แบบถาวร */
-    [data-testid="stAppDeployButton"], .stAppDeployButton {
+    /* ซ่อน Hamburger Menu (3 ขีด) */
+    #MainMenu {
+        visibility: hidden;
+        display: none;
+    }
+    
+    /* ซ่อน Footer ด้านล่าง */
+    footer {
+        visibility: hidden;
+        display: none;
+    }
+    
+    /* ซ่อนปุ่ม Deploy (รูปมงกุฎ/จรวด) และ Status Widget */
+    .stAppDeployButton, [data-testid="stAppDeployButton"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    [data-testid="stStatusWidget"] {
         display: none !important;
         visibility: hidden !important;
     }
     
-    /* ซ่อนแถบ Toolbar ด้านบนขวา (เผื่อมันโผล่มา) */
+    /* ซ่อน Toolbar เครื่องมือด้านขวา */
     [data-testid="stToolbar"] {
         display: none !important;
+        visibility: hidden !important;
     }
 
-    /* บังคับให้เนื้อหาขยายเต็มจอ ไม่เหลือที่ว่างด้านล่าง */
-    .main .block-container {
-        padding-bottom: 0px !important;
+    /* ขยับเนื้อหาขึ้นไปทับที่ว่างด้านบน */
+    .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 0rem !important;
     }
     
     /* ------------------------------------------- */
@@ -51,6 +66,7 @@ st.markdown("""
         color: #FFD700 !important;
         text-align: center;
         text-shadow: 2px 2px 4px #000000;
+        margin-top: 0px;
     }
     
     /* ข้อความทั่วไปสีขาว */
@@ -163,6 +179,7 @@ if st.button("🧧 เขย่าเซียมซีขอเลขเด็�
     st.caption("*คำเตือน: เป็นความเชื่อส่วนบุคคล (AI สุ่มมั่วๆ) เล่นอย่างมีสตินะจ๊ะ* 😆")
 
 else:
-    # --- เปลี่ยน GIF ตรงนี้ครับ! (เอาแบบขลังๆ) ---
-    st.image("https://media.giphy.com/media/l41Yh1ExbxqW027Oo/giphy.gif", use_container_width=True)
+    # --- เปลี่ยน GIF เป็นฝนทองคำ (Money Rain) ---
+    # ใช้ลิงก์ที่เสถียรกว่า (Giphy Media โดยตรง)
+    st.image("https://media.giphy.com/media/26tOZ42Mg6pbTUPVS/giphy.gif", use_container_width=True)
     st.caption("รอกดปุ่มอยู่นะจ๊ะ...")
